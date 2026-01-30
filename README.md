@@ -112,7 +112,7 @@ The use of the term `n-1` is commonly referred to as Bessel's correction. Depend
 ## Usage
 
 ```javascript
-import scovarmtk from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-strided-scovarmtk@deno/mod.js';
+import scovarmtk from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-strided-scovarmtk@v0.1.0-deno/mod.js';
 ```
 
 #### scovarmtk( N, correction, meanx, x, strideX, meany, y, strideY )
@@ -223,7 +223,7 @@ var v = scovarmtk.ndarray( 4, 1, 1.25, x, 2, 1, 1.25, y, 2, 1 );
 
 ```javascript
 import discreteUniform from 'https://cdn.jsdelivr.net/gh/stdlib-js/random-array-discrete-uniform@deno/mod.js';
-import scovarmtk from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-strided-scovarmtk@deno/mod.js';
+import scovarmtk from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-strided-scovarmtk@v0.1.0-deno/mod.js';
 
 var opts = {
     'dtype': 'float32'
