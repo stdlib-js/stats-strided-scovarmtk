@@ -105,14 +105,32 @@ The use of the term `n-1` is commonly referred to as Bessel's correction. Depend
 
 <!-- /.intro -->
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/stats-strided-scovarmtk
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
+-   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
 ```javascript
-import scovarmtk from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-strided-scovarmtk@esm/index.mjs';
+var scovarmtk = require( '@stdlib/stats-strided-scovarmtk' );
 ```
 
 #### scovarmtk( N, correction, meanx, x, strideX, meany, y, strideY )
@@ -120,7 +138,7 @@ import scovarmtk from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-strided-scova
 Computes the [covariance][covariance] of two single-precision floating-point strided arrays provided known means and using a one-pass textbook algorithm.
 
 ```javascript
-import Float32Array from 'https://cdn.jsdelivr.net/gh/stdlib-js/array-float32@esm/index.mjs';
+var Float32Array = require( '@stdlib/array-float32' );
 
 var x = new Float32Array( [ 1.0, -2.0, 2.0 ] );
 var y = new Float32Array( [ 2.0, -2.0, 1.0 ] );
@@ -143,7 +161,7 @@ The function has the following parameters:
 The `N` and stride parameters determine which elements in the strided arrays are accessed at runtime. For example, to compute the [covariance][covariance] of every other element in `x` and `y`,
 
 ```javascript
-import Float32Array from 'https://cdn.jsdelivr.net/gh/stdlib-js/array-float32@esm/index.mjs';
+var Float32Array = require( '@stdlib/array-float32' );
 
 var x = new Float32Array( [ 1.0, 2.0, 2.0, -7.0, -2.0, 3.0, 4.0, 2.0 ] );
 var y = new Float32Array( [ 2.0, 1.0, 2.0, 1.0, -2.0, 2.0, 3.0, 4.0 ] );
@@ -157,7 +175,7 @@ Note that indexing is relative to the first index. To introduce an offset, use [
 <!-- eslint-disable stdlib/capitalized-comments -->
 
 ```javascript
-import Float32Array from 'https://cdn.jsdelivr.net/gh/stdlib-js/array-float32@esm/index.mjs';
+var Float32Array = require( '@stdlib/array-float32' );
 
 var x0 = new Float32Array( [ 2.0, 1.0, 2.0, -2.0, -2.0, 2.0, 3.0, 4.0 ] );
 var y0 = new Float32Array( [ 2.0, -2.0, 2.0, 1.0, -2.0, 4.0, 3.0, 2.0 ] );
@@ -174,7 +192,7 @@ var v = scovarmtk( 4, 1, 1.25, x1, 2, 1.25, y1, 2 );
 Computes the [covariance][covariance] of two single-precision floating-point strided arrays provided known means and using a one-pass textbook algorithm and alternative indexing semantics.
 
 ```javascript
-import Float32Array from 'https://cdn.jsdelivr.net/gh/stdlib-js/array-float32@esm/index.mjs';
+var Float32Array = require( '@stdlib/array-float32' );
 
 var x = new Float32Array( [ 1.0, -2.0, 2.0 ] );
 var y = new Float32Array( [ 2.0, -2.0, 1.0 ] );
@@ -191,7 +209,7 @@ The function has the following additional parameters:
 While [`typed array`][mdn-typed-array] views mandate a view offset based on the underlying buffer, the offset parameters support indexing semantics based on starting indices. For example, to calculate the [covariance][covariance] for every other element in `x` and `y` starting from the second element
 
 ```javascript
-import Float32Array from 'https://cdn.jsdelivr.net/gh/stdlib-js/array-float32@esm/index.mjs';
+var Float32Array = require( '@stdlib/array-float32' );
 
 var x = new Float32Array( [ 2.0, 1.0, 2.0, -2.0, -2.0, 2.0, 3.0, 4.0 ] );
 var y = new Float32Array( [ -7.0, 2.0, 2.0, 1.0, -2.0, 2.0, 3.0, 4.0 ] );
@@ -221,14 +239,9 @@ var v = scovarmtk.ndarray( 4, 1, 1.25, x, 2, 1, 1.25, y, 2, 1 );
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="module">
-
-import discreteUniform from 'https://cdn.jsdelivr.net/gh/stdlib-js/random-array-discrete-uniform@esm/index.mjs';
-import scovarmtk from 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-strided-scovarmtk@esm/index.mjs';
+```javascript
+var discreteUniform = require( '@stdlib/random-array-discrete-uniform' );
+var scovarmtk = require( '@stdlib/stats-strided-scovarmtk' );
 
 var opts = {
     'dtype': 'float32'
@@ -241,10 +254,6 @@ console.log( y );
 
 var v = scovarmtk( x.length, 1, 0.0, x, 1, 0.0, y, 1 );
 console.log( v );
-
-</script>
-</body>
-</html>
 ```
 
 </section>
@@ -253,7 +262,133 @@ console.log( v );
 
 <!-- C interface documentation. -->
 
+* * *
 
+<section class="c">
+
+## C APIs
+
+<!-- Section to include introductory text. Make sure to keep an empty line after the intro `section` element and another before the `/section` close. -->
+
+<section class="intro">
+
+</section>
+
+<!-- /.intro -->
+
+<!-- C usage documentation. -->
+
+<section class="usage">
+
+### Usage
+
+```c
+#include "stdlib/stats/strided/scovarmtk.h"
+```
+
+#### stdlib_strided_scovarmtk( N, correction, meanx, \*X, strideX, meany, \*Y, strideY )
+
+Computes the [covariance][covariance] of two single-precision floating-point strided arrays provided known means and using a one-pass textbook algorithm.
+
+```c
+const float x[] = { 1.0f, -2.0f, 2.0f };
+const float y[] = { 2.0f, -2.0f, 1.0f };
+
+float v = stdlib_strided_scovarmtk( 3, 1.0f, 1.0f/3.0f, x, 1, 1.0f/3.0f, y, 1 );
+// returns ~3.8333f
+```
+
+The function accepts the following arguments:
+
+-   **N**: `[in] CBLAS_INT` number of indexed elements.
+-   **correction**: `[in] float` degrees of freedom adjustment. Setting this parameter to a value other than `0` has the effect of adjusting the divisor during the calculation of the [covariance][covariance] according to `N-c` where `c` corresponds to the provided degrees of freedom adjustment. When computing the population [covariance][covariance], setting this parameter to `0` is the standard choice (i.e., the provided arrays contain data constituting entire populations). When computing the unbiased sample [covariance][covariance], setting this parameter to `1` is the standard choice (i.e., the provided arrays contain data sampled from larger populations; this is commonly referred to as Bessel's correction).
+-   **meanx**: `[in] float` mean of `X`.
+-   **X**: `[in] float*` first input array.
+-   **strideX**: `[in] CBLAS_INT` stride length for `X`.
+-   **meany**: `[in] float` mean of `Y`.
+-   **Y**: `[in] float*` second input array.
+-   **strideY**: `[in] CBLAS_INT` stride length for `Y`.
+
+```c
+float stdlib_strided_scovarmtk( const CBLAS_INT N, const float correction, const float meanx, const float *X, const CBLAS_INT strideX, const float meany, const float *Y, const CBLAS_INT strideY );
+```
+
+#### stdlib_strided_scovarmtk_ndarray( N, correction, meanx, \*X, strideX, offsetX, meany, \*Y, strideY, offsetY )
+
+Computes the [covariance][covariance] of two single-precision floating-point strided arrays provided known means and using a one-pass textbook algorithm and alternative indexing semantics.
+
+```c
+const float x[] = { 1.0f, -2.0f, 2.0f };
+const float y[] = { 2.0f, -2.0f, 1.0f };
+
+float v = stdlib_strided_scovarmtk_ndarray( 3, 1.0f, 1.0f/3.0f, x, 1, 0, 1.0f/3.0f, y, 1, 0 );
+// returns ~3.8333f
+```
+
+The function accepts the following arguments:
+
+-   **N**: `[in] CBLAS_INT` number of indexed elements.
+-   **correction**: `[in] float` degrees of freedom adjustment. Setting this parameter to a value other than `0` has the effect of adjusting the divisor during the calculation of the [covariance][covariance] according to `N-c` where `c` corresponds to the provided degrees of freedom adjustment. When computing the population [covariance][covariance], setting this parameter to `0` is the standard choice (i.e., the provided arrays contain data constituting entire populations). When computing the unbiased sample [covariance][covariance], setting this parameter to `1` is the standard choice (i.e., the provided arrays contain data sampled from larger populations; this is commonly referred to as Bessel's correction).
+-   **meanx**: `[in] float` mean of `X`.
+-   **X**: `[in] float*` first input array.
+-   **strideX**: `[in] CBLAS_INT` stride length for `X`.
+-   **offsetX**: `[in] CBLAS_INT` starting index for `X`.
+-   **meany**: `[in] float` mean of `Y`.
+-   **Y**: `[in] float*` second input array.
+-   **strideY**: `[in] CBLAS_INT` stride length for `Y`.
+-   **offsetY**: `[in] CBLAS_INT` starting index for `Y`.
+
+```c
+float stdlib_strided_scovarmtk_ndarray( const CBLAS_INT N, const float correction, const float meanx, const float *X, const CBLAS_INT strideX, const CBLAS_INT offsetX, const float meany, const float *Y, const CBLAS_INT strideY, const CBLAS_INT offsetY );
+```
+
+</section>
+
+<!-- /.usage -->
+
+<!-- C API usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
+
+<section class="notes">
+
+</section>
+
+<!-- /.notes -->
+
+<!-- C API usage examples. -->
+
+<section class="examples">
+
+### Examples
+
+```c
+#include "stdlib/stats/strided/scovarmtk.h"
+#include <stdio.h>
+
+int main( void ) {
+    // Create a strided array:
+    const float x[] = { 1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f };
+
+    // Specify the number of elements:
+    const int N = 4;
+
+    // Specify the stride length:
+    const int strideX = 2;
+
+    // Compute the covariance of `x` with itself:
+    float v = stdlib_strided_scovarmtk( N, 1.0f, 4.5f, x, strideX, 4.5f, x, -strideX );
+
+    // Print the result:
+    printf( "covariance: %f\n", v );
+}
+```
+
+</section>
+
+<!-- /.examples -->
+
+</section>
+
+<!-- /.c -->
 
 <section class="references">
 
@@ -278,7 +413,7 @@ console.log( v );
 
 ## Notice
 
-This package is part of [stdlib][stdlib], a standard library with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
+This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
 
 For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
 
@@ -308,8 +443,8 @@ Copyright &copy; 2016-2026. The Stdlib [Authors][stdlib-authors].
 [npm-image]: http://img.shields.io/npm/v/@stdlib/stats-strided-scovarmtk.svg
 [npm-url]: https://npmjs.org/package/@stdlib/stats-strided-scovarmtk
 
-[test-image]: https://github.com/stdlib-js/stats-strided-scovarmtk/actions/workflows/test.yml/badge.svg?branch=main
-[test-url]: https://github.com/stdlib-js/stats-strided-scovarmtk/actions/workflows/test.yml?query=branch:main
+[test-image]: https://github.com/stdlib-js/stats-strided-scovarmtk/actions/workflows/test.yml/badge.svg?branch=v0.1.1
+[test-url]: https://github.com/stdlib-js/stats-strided-scovarmtk/actions/workflows/test.yml?query=branch:v0.1.1
 
 [coverage-image]: https://img.shields.io/codecov/c/github/stdlib-js/stats-strided-scovarmtk/main.svg
 [coverage-url]: https://codecov.io/github/stdlib-js/stats-strided-scovarmtk?branch=main
@@ -343,7 +478,7 @@ Copyright &copy; 2016-2026. The Stdlib [Authors][stdlib-authors].
 
 [covariance]: https://en.wikipedia.org/wiki/Covariance
 
-[@stdlib/array/float32]: https://github.com/stdlib-js/array-float32/tree/esm
+[@stdlib/array/float32]: https://github.com/stdlib-js/array-float32
 
 [mdn-typed-array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
 
